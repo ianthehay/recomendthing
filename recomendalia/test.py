@@ -49,5 +49,7 @@ for suggestion in common:
  # Then suggest other concepts with the same attributes ranked by the most common decending to those less common.
  # To increse the size of the list the same can then be repeated for those with rating greater than 2 and less than 4
  # These can then be apended to the suggested concept list.
+ # If there are no concepts with common atributes in the two categories discussed then suggestions can be added based on
+ # the highest rating for a concept. Eg an italain restaurant has the highest rating so suggest another italian restaurant.
 
 
