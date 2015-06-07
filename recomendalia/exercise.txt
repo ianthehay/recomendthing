@@ -1,0 +1,38 @@
+
+In this exercise, we provide you with part of the Python source code for a fake
+website, recomendalia.com. This website would allow its users to rate different
+concepts: restaurants, music, movies, books, and any other kind of product or
+service. And being a social network, it also would allow users to befriend other
+users.
+
+The accompanying source code already does all of that, but is missing two key
+pieces of any social website: suggestions for both potential friends and
+topics of interest. Here is where you come in.
+
+The source code for the User class defines two method stubs with no
+implementation: suggest_friends() and suggest_concepts(). Your task is twofold:
+you must implement one of the two methods (choose whichever one you prefer),
+and write up an analysis of the other (just describe the algorithm you would
+apply, explaining the patterns and criteria you would observe to produce your
+suggestions).
+
+You can look at the docstrings of both methods for additional instructions on
+their expected behavior and form. What they don't explain, though, is which
+patterns should be observed when producing their suggestions, or the relative
+weight of different criteria: that is for you to decide. The choices you make
+will tell us as much as the actual code you write. So, think about the problem
+at hand carefully and consider all the possibilities offered by the given data
+model.
+
+You are allowed to add additional methods, properties and functions wherever
+you deem necessary. You can also extend the existing methods with optional
+parameters.
+
+As well as the definitions for the different models required by the application,
+we provide you with a sampledata.py module. Its generate_sample_data() function
+creates a set of fake users, concepts and ratings that can help you test your
+code.
+
+Please feel free to ask us any questions you may have. You can send them to
+marti.congost@whads.com.
+
