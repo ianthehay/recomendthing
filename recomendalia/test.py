@@ -40,3 +40,14 @@ for suggestion in common:
 # 	friendsuggestion.rank +=1
 
 # matches = [x for x in network if x = person]
+
+
+# To implement the Concept suggestions:
+ # first from the list of concepts for a user search for concepts which have a rating of greater than 4
+ # from this list of highly rated concepts check for concepts which share common attributes. 
+ # EG from the category of jazz or from italian restaurant or movies created by stalone.
+ # Then suggest other concepts with the same attributes ranked by the most common decending to those less common.
+ # To increse the size of the list the same can then be repeated for those with rating greater than 2 and less than 4
+ # These can then be apended to the suggested concept list.
+
+
