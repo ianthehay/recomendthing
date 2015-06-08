@@ -25,7 +25,7 @@ nonfriendnetwork=[x for x in self.network if x in self.friends]
 # determine the occurances of each non friend in the network
 counter = collections.Counter(self.nonfriendnetwork)	
 # get a lsit of the most commonly occuring 4 people
-common = nonfriendnetwork.most_common(4)
+common = counter.most_common(4)
 
 suggestionlist=[]
 
