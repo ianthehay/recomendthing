@@ -42,17 +42,22 @@ class User(object):
         # generate the users network
         self.gen_network()
         # remove already friends and self from network 
-        nonfriendnetwork=[x for x in self.network if x in self.friends]
+        nonfriendnetwork=[x for x in self.network if x not in self.friends and x.name != self.name]
         # determine the occurances of each non friend in the network
         counter = collections.Counter(nonfriendnetwork)   
         # get a lsit of the most commonly occuring 4 people
-        common = nonfriendnetwork.most_common(4)
-
-        # Iterate over the suggestions in the most common list and create FrienSugesiton Objects
+        common = counter.most_common(8)
+        #remove suggesitons where no friends or only 1 in common exist. ie rank of less than 4. 4 is used as netowork rank is 2* friends in common
+        for x in common:
+            if x[1] < 4:
+                common.remove(x)
+        
+        # Iterate over the suggestions in the most common list and create FriendSugesiton Objects
         for suggestion in common:
             userobject = suggestion[0]
-            rank=suggestion[1]
-            suggestionlist.append(FriendSuggestion(userobject,rank))
+            rank=(suggestion[1])/2 
+            friendsincommon=self.get_friends_in_common(userobject)
+            suggestionlist.append(FriendSuggestion(userobject,rank, friendsincommon ))
         # Return the list of the suggestion objects
         return suggestionlist
 
@@ -62,6 +67,13 @@ class User(object):
             for userfriend in friend.friends:
                 self.network.append(userfriend)
         return self.network
+        
+    def get_friends_in_common(self, suggested_person):
+        #Get friends in common between the user and the suggested person
+        friendincommonlist = [ x for x in self.friends if x in suggested_person.friends]
+        
+        
+        return friendincommonlist
 
     def suggest_concepts(self):
         """Suggest concepts that this user may be interested in.
@@ -110,10 +122,14 @@ class FriendSuggestion(object):
 
     user = None
 
-    def __init__(self, userobject,rank):
+    def __init__(self, userobject,rank,friendsincommon):
         self.user=userobject
         self._rank=rank
-
+        self._friendsincommon= friendsincommon
+        
+    def __repr__(self):
+        return "%s(%r)" % (self.__class__.__name__, self.user)
+        
     @property
     def rank(self):
         # The rank of the suggested person
@@ -121,6 +137,12 @@ class FriendSuggestion(object):
         # For Example a rank of 5 means 5 of the users friends are friends with this person
 
         return self._rank
+        
+    @property
+    def friendsincommon(self):
+        #list of friends in common that this suggestion has with the user
+        
+        return self._friendsincommon
 
 
 class ConceptSuggestion(object):

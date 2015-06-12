@@ -4,7 +4,7 @@ u"""A module providing functions that generate sample data for the exercise.
 .. moduleauthor:: Martí Congost <marti.congost@whads.com>
 """
 from random import choice, randint
-from recomendalia.user import User
+from recomendalia.user import User, FriendSuggestion
 from recomendalia.concept import Concept
 from recomendalia.rating import Rating
 from recomendalia.relation import Relation
