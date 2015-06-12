@@ -5,7 +5,8 @@ recomendalia.sampledata
 data= recomendalia.sampledata.generate_sample_data()
 users=data[0]
 usertest=users[0]
-usertest.suggest_friends()
+
+suggestions=usertest.suggest_friends()
 
 
 
